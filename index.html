@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Valle Bianco Odontologia — Landing Page (Copy)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@300;400;500;600;700&family=Beau+Rivage&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+
+  --font-display:'Syne',sans-serif;
+  --font-script:'Beau Rivage',cursive;
+  --font-body:'Manrope',sans-serif;
+
+  --color-bg:#FFFFFF;
+  --color-surface:#F3FAF8;
+  --color-surface-2:#EAF6F2;
+  --color-text:#132420;
+  --color-text-muted:#5C6E67;
+  --color-accent:#1F6F62;
+  --color-accent-2:#3F9C8C;
+  --color-accent-soft:#8FCFC0;
+  --color-accent-pale:#E7F5F1;
+  --color-border:#DCEAE6;
+  --color-inverse-text:#FFFFFF;
+  --shadow-soft:0 20px 60px -30px rgba(18,48,43,0.35);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --color-bg:#0D1917;
+    --color-surface:#12201D;
+    --color-surface-2:#162925;
+    --color-text:#EAF3F0;
+    --color-text-muted:#9BB0A9;
+    --color-accent:#6FCBB8;
+    --color-accent-2:#4FA894;
+    --color-accent-soft:#2F5D53;
+    --color-accent-pale:#17332D;
+    --color-border:#22403A;
+    --color-inverse-text:#0D1917;
+    --shadow-soft:0 20px 60px -30px rgba(0,0,0,0.6);
+  }
+}
+:root[data-theme="dark"]{
+  --color-bg:#0D1917;
+  --color-surface:#12201D;
+  --color-surface-2:#162925;
+  --color-text:#EAF3F0;
+  --color-text-muted:#9BB0A9;
+  --color-accent:#6FCBB8;
+  --color-accent-2:#4FA894;
+  --color-accent-soft:#2F5D53;
+  --color-accent-pale:#17332D;
+  --color-border:#22403A;
+  --color-inverse-text:#0D1917;
+  --shadow-soft:0 20px 60px -30px rgba(0,0,0,0.6);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
+
+*,*::before,*::after{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--color-bg);
+  color:var(--color-text);
+  font-family:var(--font-body);
+  font-weight:400;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,canvas,svg{max-width:100%;display:block;}
+a{color:inherit;}
+button{font-family:inherit;}
+.container{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,48px);}
+.section{padding:clamp(72px,11vw,140px) 0;}
+.section-surface{background:var(--color-surface);}
+
+.eyebrow-script{
+  display:block;
+  font-family:var(--font-script);
+  font-weight:400;
+  font-size:clamp(1.5rem,3.2vw,2.1rem);
+  color:var(--color-accent);
+  margin:0 0 6px;
+  line-height:1.1;
+}
+h1,h2,h3{font-family:var(--font-display);margin:0;color:var(--color-text);}
+h2{
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:0.01em;
+  font-size:clamp(1.8rem,4vw,2.9rem);
+  line-height:1.08;
+  max-width:16ch;
+}
+.section-head{margin-bottom:clamp(36px,6vw,64px);}
+.section-head p{
+  margin-top:16px;
+  max-width:56ch;
+  color:var(--color-text-muted);
+  font-weight:300;
+  font-size:1.05rem;
+}
+p{margin:0 0 1em;}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  border-radius:999px;padding:15px 30px;
+  font-family:var(--font-body);font-weight:600;font-size:0.95rem;
+  border:1px solid transparent;cursor:pointer;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,background .3s ease,border-color .3s ease;
+  text-decoration:none;white-space:nowrap;
+}
+.btn-primary{background:var(--color-accent);color:var(--color-inverse-text);}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:var(--shadow-soft);}
+.btn-outline{background:transparent;border-color:var(--color-border);color:var(--color-text);}
+.btn-outline:hover{border-color:var(--color-accent);color:var(--color-accent);transform:translateY(-3px);}
+.btn:focus-visible{outline:2px solid var(--color-accent);outline-offset:3px;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--color-accent);outline-offset:3px;}
+
+/* reveal utility */
+.reveal{opacity:0;transform:translateY(14px) scale(.99);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1);}
+.reveal.is-visible{opacity:1;transform:none;}
+.reduce-motion .reveal{opacity:1;transform:none;transition:none;}
+
+/* ============ HEADER ============ */
+.site-header{
+  position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:100;
+  padding:20px 0;transition:padding .35s ease,background .35s ease,box-shadow .35s ease,backdrop-filter .35s ease;
+}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.site-header.is-scrolled{
+  padding:12px 0;background:color-mix(in srgb, var(--color-bg) 82%, transparent);
+  backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--color-border);
+}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--color-text);}
+.logo svg{width:30px;height:30px;color:var(--color-accent);flex-shrink:0;}
+.logo-text{display:flex;flex-direction:column;line-height:1;}
+.logo-text strong{font-family:var(--font-display);font-weight:800;letter-spacing:.03em;font-size:1.05rem;text-transform:uppercase;}
+.logo-text span{font-size:.68rem;color:var(--color-text-muted);letter-spacing:.08em;margin-top:3px;}
+
+.nav{display:flex;align-items:center;gap:clamp(18px,2.4vw,34px);}
+.nav a{text-decoration:none;color:var(--color-text-muted);font-size:.95rem;font-weight:500;transition:color .25s ease;}
+.nav a:hover{color:var(--color-accent);}
+.nav-toggle{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--color-text);}
+.nav-toggle svg{width:26px;height:26px;}
+
+@media (max-width:860px){
+  .nav-links{
+    position:fixed;inset:0;top:0;background:var(--color-bg);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+    transform:translateY(-100%);transition:transform .45s cubic-bezier(.2,.8,.2,1);
+    padding:40px 20px;z-index:99;
+  }
+  .nav-links.is-open{transform:translateY(0);}
+  .nav-links a{font-size:1.4rem;}
+  .nav-cta-desktop{display:none;}
+  .nav-toggle{display:inline-flex;}
+}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;min-height:100svh;min-height:100vh;
+  display:flex;align-items:center;
+  padding-top:calc(120px + env(safe-area-inset-top,0px));padding-bottom:80px;
+  overflow:hidden;isolation:isolate;
+}
+.hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-2;}
+.hero.no-webgl .hero-canvas{display:none;}
+.hero-fallback-bg{
+  position:absolute;inset:-10%;z-index:-2;display:none;
+  background:
+    radial-gradient(38% 42% at 18% 24%, var(--color-accent-soft) 0%, transparent 70%),
+    radial-gradient(46% 50% at 82% 70%, var(--color-accent-pale) 0%, transparent 70%),
+    var(--color-bg);
+  filter:blur(10px);
+}
+.hero.no-webgl .hero-fallback-bg{display:block;animation:driftBg 22s ease-in-out infinite alternate;}
+@keyframes driftBg{from{transform:translate(0,0) scale(1);}to{transform:translate(-3%,2%) scale(1.06);}}
+.reduce-motion .hero.no-webgl .hero-fallback-bg{animation:none;}
+.hero-veil{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg, color-mix(in srgb, var(--color-bg) 25%, transparent) 0%, color-mix(in srgb, var(--color-bg) 78%, transparent) 88%);}
+
+.hero-inner{max-width:680px;}
+.hero-inner .eyebrow-script{opacity:0;animation:heroIn .9s cubic-bezier(.2,.8,.2,1) .15s forwards;}
+.hero-inner h1{opacity:0;animation:heroIn .9s cubic-bezier(.2,.8,.2,1) .35s forwards; font-size:clamp(2.3rem,6.4vw,4.6rem); line-height:1.04;}
+.hero-inner .hero-text{opacity:0;animation:heroIn .9s cubic-bezier(.2,.8,.2,1) .55s forwards;margin-top:22px;font-size:1.08rem;color:var(--color-text-muted);max-width:52ch;font-weight:300;}
+.hero-actions{opacity:0;animation:heroIn .9s cubic-bezier(.2,.8,.2,1) .75s forwards;display:flex;flex-wrap:wrap;gap:16px;margin-top:34px;}
+@keyframes heroIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+.reduce-motion .hero-inner *{animation:none !important;opacity:1 !important;transform:none !important;}
+
+.hero-badge{
+  position:absolute;right:clamp(24px,6vw,80px);bottom:clamp(96px,12vh,150px);
+  display:flex;align-items:center;gap:14px;padding:14px 20px;border-radius:999px;
+  background:color-mix(in srgb, var(--color-bg) 70%, transparent);backdrop-filter:blur(10px);
+  border:1px solid var(--color-border);
+}
+@media (max-width:760px){.hero-badge{display:none;}}
+.hero-badge .stars{display:flex;color:var(--color-accent);}
+.hero-badge svg{width:15px;height:15px;}
+.hero-badge span{font-size:.85rem;color:var(--color-text-muted);}
+.hero-badge strong{color:var(--color-text);}
+
+/* ============ SOBRE ============ */
+.sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center;}
+@media (max-width:860px){.sobre-grid{grid-template-columns:1fr;}}
+.sobre-visual{position:relative;aspect-ratio:4/5;border-radius:26px;overflow:hidden;
+  background:linear-gradient(155deg, var(--color-accent-pale), var(--color-surface-2) 55%, var(--color-accent-soft));
+}
+.sobre-visual svg{position:absolute;inset:0;width:100%;height:100%;color:var(--color-accent);opacity:.9;}
+.sobre-visual .tag{
+  position:absolute;left:20px;bottom:20px;padding:10px 16px;border-radius:14px;
+  background:color-mix(in srgb, var(--color-bg) 88%, transparent);backdrop-filter:blur(6px);
+  font-size:.82rem;color:var(--color-text-muted);
+}
+.sobre-copy .eyebrow-script{margin-bottom:10px;}
+.sobre-copy p{color:var(--color-text-muted);font-weight:300;font-size:1.02rem;max-width:52ch;}
+.sobre-list{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:14px;}
+.sobre-list li{display:flex;gap:12px;align-items:flex-start;color:var(--color-text);font-size:.98rem;}
+.sobre-list svg{width:19px;height:19px;color:var(--color-accent);flex-shrink:0;margin-top:2px;}
+
+/* ============ PILHA (stacking cards) ============ */
+.pilha-wrap{position:relative;}
+.pilha-card{
+  position:sticky;top:110px;margin-bottom:26px;
+  border-radius:28px;padding:clamp(30px,4.5vw,56px);
+  background:var(--color-surface);border:1px solid var(--color-border);
+  box-shadow:var(--shadow-soft);
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,44px);align-items:center;
+  transform-origin:center top;will-change:transform,filter;
+}
+@media (max-width:700px){.pilha-card{grid-template-columns:1fr;text-align:left;}}
+.pilha-card .num{
+  font-family:var(--font-display);font-weight:800;font-size:clamp(2.4rem,5vw,3.6rem);
+  color:var(--color-accent-soft);line-height:1;
+}
+.pilha-card h3{font-size:clamp(1.25rem,2.4vw,1.7rem);text-transform:uppercase;letter-spacing:.01em;font-weight:700;margin-bottom:12px;}
+.pilha-card p{color:var(--color-text-muted);font-weight:300;max-width:56ch;margin:0;}
+
+/* ============ SERVIÇOS ============ */
+.servicos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;}
+.servico-card{
+  padding:30px 26px;border-radius:22px;background:var(--color-bg);border:1px solid var(--color-border);
+  transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .3s ease,box-shadow .4s ease;
+}
+.servico-card:hover{transform:translateY(-6px);border-color:var(--color-accent-soft);box-shadow:var(--shadow-soft);}
+.servico-icon{
+  width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+  background:var(--color-accent-pale);color:var(--color-accent);margin-bottom:20px;
+  transition:background .3s ease,color .3s ease,transform .4s cubic-bezier(.2,.8,.2,1);
+}
+.servico-card:hover .servico-icon{background:var(--color-accent);color:var(--color-inverse-text);transform:rotate(-6deg) scale(1.06);}
+.servico-icon svg{width:22px;height:22px;}
+.servico-card h3{font-family:var(--font-body);font-size:1.05rem;font-weight:700;margin-bottom:8px;text-transform:none;}
+.servico-card p{color:var(--color-text-muted);font-size:.92rem;font-weight:300;margin:0;}
+
+/* ============ GALERIA HORIZONTAL (sticky scroll) ============ */
+.galeria-h{position:relative;}
+.galeria-h__intro{padding:0 0 clamp(30px,5vw,54px);}
+.galeria-h__stage{position:sticky;top:0;height:100svh;height:100vh;overflow:hidden;display:flex;align-items:center;}
+.galeria-h__track{display:flex;gap:24px;padding:0 clamp(20px,5vw,48px);will-change:transform;}
+.galeria-h.reduced .galeria-h__stage{position:static;height:auto;overflow-x:auto;padding:10px 0 20px;-webkit-overflow-scrolling:touch;}
+.galeria-h.reduced .galeria-h__track{transform:none !important;}
+.h-card{
+  position:relative;flex:0 0 clamp(240px,32vw,380px);height:clamp(320px,52vh,460px);
+  border-radius:26px;overflow:hidden;color:var(--color-inverse-text);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:26px;
+}
+.h-card .bg{position:absolute;inset:0;z-index:0;}
+.h-card .content{position:relative;z-index:1;}
+.h-card svg{width:30px;height:30px;margin-bottom:14px;color:#fff;opacity:.92;}
+.h-card h3{font-family:var(--font-body);font-size:1.15rem;font-weight:700;margin-bottom:6px;text-transform:none;}
+.h-card p{font-size:.88rem;opacity:.88;font-weight:300;margin:0;max-width:24ch;}
+
+/* ============ TIMELINE ============ */
+.timeline-wrap{position:relative;max-width:640px;margin:0 auto;}
+.timeline-track{position:absolute;left:19px;top:6px;bottom:6px;width:2px;background:var(--color-border);border-radius:2px;}
+.timeline-fill{position:absolute;top:0;left:0;width:100%;height:0;background:var(--color-accent);border-radius:2px;transition:height .1s linear;}
+.reduce-motion .timeline-fill{transition:none;}
+.timeline-list{list-style:none;margin:0;padding:0;display:grid;gap:clamp(34px,6vw,58px);}
+.timeline-step{position:relative;padding-left:56px;}
+.timeline-dot{
+  position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;
+  background:var(--color-bg);border:2px solid var(--color-border);
+  display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;
+  color:var(--color-text-muted);transition:all .5s cubic-bezier(.2,.8,.2,1);
+}
+.timeline-step.is-active .timeline-dot{background:var(--color-accent);border-color:var(--color-accent);color:#fff;transform:scale(1.08);}
+.timeline-step h3{font-size:1.1rem;font-weight:700;text-transform:none;margin-bottom:6px;transition:color .4s ease;}
+.timeline-step.is-active h3{color:var(--color-accent);}
+.timeline-step p{color:var(--color-text-muted);font-size:.94rem;font-weight:300;margin:0;max-width:48ch;}
+
+/* ============ DRAG GALLERY ============ */
+.drag-gallery{
+  overflow-x:auto;overflow-y:hidden;display:flex;gap:20px;padding:6px 0 20px;
+  cursor:grab;scrollbar-width:none;touch-action:pan-y;user-select:none;
+}
+.drag-gallery::-webkit-scrollbar{display:none;}
+.drag-gallery.is-dragging{cursor:grabbing;}
+.drag-gallery.is-dragging .d-card{pointer-events:none;}
+.d-card{
+  flex:0 0 clamp(210px,28vw,300px);height:clamp(260px,34vw,340px);border-radius:22px;
+  position:relative;overflow:hidden;color:#fff;display:flex;align-items:flex-end;padding:22px;
+}
+.d-card .bg{position:absolute;inset:0;}
+.d-card .content{position:relative;z-index:1;}
+.d-card span{font-size:.72rem;text-transform:uppercase;letter-spacing:.09em;opacity:.75;}
+.d-card h3{font-family:var(--font-body);font-size:1.05rem;font-weight:700;margin-top:6px;text-transform:none;}
+.drag-hint{display:flex;align-items:center;gap:8px;color:var(--color-text-muted);font-size:.85rem;margin-top:14px;}
+.drag-hint svg{width:18px;height:18px;}
+
+/* ============ DEPOIMENTOS ============ */
+.depoimentos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
+.depo-card{padding:28px;border-radius:22px;background:var(--color-bg);border:1px solid var(--color-border);}
+.depo-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.avatar{
+  width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:700;color:#fff;font-size:.9rem;flex-shrink:0;
+}
+.depo-name{font-weight:700;font-size:.95rem;}
+.depo-loc{font-size:.78rem;color:var(--color-text-muted);}
+.stars{display:flex;gap:2px;color:var(--color-accent);margin-bottom:10px;}
+.stars svg{width:14px;height:14px;}
+.depo-card p{color:var(--color-text-muted);font-size:.94rem;font-weight:300;margin:0;}
+
+/* ============ FAQ ============ */
+.faq-wrap{max-width:760px;margin:0 auto;}
+.faq-item{border-bottom:1px solid var(--color-border);}
+.faq-q{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:none;border:0;padding:22px 4px;text-align:left;cursor:pointer;color:var(--color-text);
+  font-size:1rem;font-weight:600;
+}
+.faq-icon{width:22px;height:22px;flex-shrink:0;position:relative;color:var(--color-accent);}
+.faq-icon::before,.faq-icon::after{content:'';position:absolute;background:currentColor;top:50%;left:50%;transform:translate(-50%,-50%);transition:transform .35s ease,opacity .35s ease;}
+.faq-icon::before{width:14px;height:2px;}
+.faq-icon::after{width:2px;height:14px;}
+.faq-item.is-open .faq-icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
+.faq-a-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.2,.8,.2,1);}
+.reduce-motion .faq-a-wrap{transition:none;}
+.faq-item.is-open .faq-a-wrap{grid-template-rows:1fr;}
+.faq-a-inner{overflow:hidden;}
+.faq-a-inner p{padding:0 4px 22px;color:var(--color-text-muted);font-weight:300;font-size:.95rem;max-width:60ch;margin:0;}
+
+/* ============ CHAT ============ */
+.chat-shell{
+  max-width:480px;margin:0 auto;border-radius:26px;overflow:hidden;
+  border:1px solid var(--color-border);background:var(--color-bg);box-shadow:var(--shadow-soft);
+}
+.chat-head{display:flex;align-items:center;gap:12px;padding:18px 20px;background:var(--color-accent);color:#fff;}
+.chat-head .dot{width:9px;height:9px;border-radius:50%;background:#7CFFD8;}
+.chat-head strong{font-size:.95rem;}
+.chat-head span{display:block;font-size:.76rem;opacity:.8;}
+.chat-messages{height:320px;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px;background:var(--color-surface);}
+.msg{max-width:80%;padding:11px 15px;border-radius:16px;font-size:.9rem;line-height:1.5;animation:msgIn .35s ease;}
+.reduce-motion .msg{animation:none;}
+@keyframes msgIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+.msg-bot{align-self:flex-start;background:var(--color-bg);border:1px solid var(--color-border);border-bottom-left-radius:4px;}
+.msg-user{align-self:flex-end;background:var(--color-accent);color:#fff;border-bottom-right-radius:4px;}
+.typing{align-self:flex-start;display:flex;gap:4px;padding:13px 16px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:16px;border-bottom-left-radius:4px;}
+.typing span{width:6px;height:6px;border-radius:50%;background:var(--color-text-muted);animation:typingBounce 1.1s infinite ease-in-out;}
+.typing span:nth-child(2){animation-delay:.15s;}
+.typing span:nth-child(3){animation-delay:.3s;}
+@keyframes typingBounce{0%,60%,100%{transform:translateY(0);opacity:.5;}30%{transform:translateY(-4px);opacity:1;}}
+.chat-suggestions{display:flex;flex-wrap:wrap;gap:8px;padding:16px 18px;border-top:1px solid var(--color-border);}
+.chat-chip{
+  border:1px solid var(--color-border);background:var(--color-bg);border-radius:999px;padding:9px 14px;
+  font-size:.8rem;cursor:pointer;color:var(--color-text);transition:border-color .25s ease,color .25s ease,background .25s ease;
+}
+.chat-chip:hover{border-color:var(--color-accent);color:var(--color-accent);}
+.chat-chip:disabled{opacity:.4;cursor:default;}
+
+/* ============ CTA FINAL ============ */
+.cta-final{position:relative;overflow:hidden;text-align:center;isolation:isolate;}
+.cta-final-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-2;opacity:.55;}
+.cta-final.no-webgl .cta-final-canvas{display:none;}
+.cta-final .hero-fallback-bg{display:none;}
+.cta-final.no-webgl .hero-fallback-bg{display:block;}
+.cta-final-veil{position:absolute;inset:0;z-index:-1;background:color-mix(in srgb, var(--color-bg) 55%, transparent);}
+.cta-final h2{max-width:none;margin:0 auto;}
+.cta-final .eyebrow-script{display:block;}
+.cta-final-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-top:30px;}
+
+/* ============ FOOTER ============ */
+footer{padding:60px 0 40px;border-top:1px solid var(--color-border);}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;}
+@media (max-width:700px){.footer-grid{grid-template-columns:1fr;gap:30px;}}
+.footer-grid h4{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted);margin-bottom:16px;font-weight:600;}
+.footer-grid p, .footer-grid a{font-size:.92rem;color:var(--color-text-muted);text-decoration:none;margin:0 0 8px;display:block;}
+.footer-grid a:hover{color:var(--color-accent);}
+.footer-bottom{margin-top:44px;padding-top:24px;border-top:1px solid var(--color-border);font-size:.8rem;color:var(--color-text-muted);}
+
+/* ============ WHATSAPP FLOAT ============ */
+.wa-float{
+  position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:90;
+  width:58px;height:58px;border-radius:50%;background:var(--color-accent);color:#fff;
+  display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-soft);
+  transition:transform .3s cubic-bezier(.2,.8,.2,1);text-decoration:none;
+}
+.wa-float:hover{transform:scale(1.08);}
+.wa-float svg{width:26px;height:26px;}
+
+.divider-note{display:flex;align-items:center;gap:14px;color:var(--color-text-muted);font-size:.85rem;margin-top:20px;}
+.divider-note svg{width:18px;height:18px;color:var(--color-accent);}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <a href="#topo" class="logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3C10 3 6 8 6 14c0 7 4.5 12.5 8.2 14.4.6.3 1 .3 1.6 0C19.5 26.5 26 21 26 14c0-6-4-11-10-11Z" stroke="currentColor" stroke-width="1.4"/><path d="M16 9c-2.5 2-3.4 4.6-2.6 8.4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <span class="logo-text"><strong>Valle Bianco</strong><span>Odontologia</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#sobre">Sobre</a>
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#duvidas">Dúvidas</a>
+      <a href="#contato" class="btn btn-primary" style="margin-top:10px;">Agendar avaliação</a>
+    </nav>
+    <div class="nav" style="gap:16px;">
+      <a href="#contato" class="btn btn-primary nav-cta-desktop">Agendar avaliação</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg id="navToggleIcon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="topo">
+  <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="hero-fallback-bg" aria-hidden="true"></div>
+  <div class="hero-veil" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <span class="eyebrow-script">cuidado que acompanha sua história</span>
+      <h1>Odontologia de Bento Gonçalves, em ritmo humano</h1>
+      <p class="hero-text">A Valle Bianco nasceu para oferecer um atendimento odontológico atencioso, com tecnologia atual e uma equipe que reserva tempo de verdade para cada pessoa que chega até nós.</p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn btn-primary">Agendar avaliação</a>
+        <a href="#sobre" class="btn btn-outline">Conhecer a clínica</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-badge">
+    <div class="stars" aria-hidden="true">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+      <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+      <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+      <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+      <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+    </div>
+    <span><strong>Pacientes atendidos</strong><br>com atenção real, todos os dias</span>
+  </div>
+</section>
+
+<!-- ============ SOBRE ============ -->
+<section class="section" id="sobre">
+  <div class="container sobre-grid">
+    <div class="sobre-visual reveal">
+      <svg viewBox="0 0 300 380" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M150 40c-46 0-84 40-84 92 0 60 40 108 74 128 6 4 10 4 16 0 34-20 78-68 78-128 0-52-42-92-84-92Z" stroke="currentColor" stroke-width="1" opacity=".5"/><path d="M110 150c14-22 30-30 40-30s26 8 40 30" stroke="currentColor" stroke-width="1" opacity=".5"/><circle cx="150" cy="118" r="3" fill="currentColor" opacity=".6"/></svg>
+      <div class="tag">Consultório · Bento Gonçalves, RS</div>
+    </div>
+    <div class="sobre-copy reveal">
+      <span class="eyebrow-script">a clínica</span>
+      <h2>Um espaço pensado para você respirar aliviado</h2>
+      <p>Reunimos uma equipe de cirurgiões-dentistas com formação em diferentes especialidades num único endereço, para que o seu tratamento faça sentido do início ao fim — sem encaminhamentos soltos nem explicações apressadas. Cada sala foi planejada para reduzir o desconforto de estar num consultório: luz suave, silêncio e equipamentos que trabalham em segundo plano.</p>
+      <ul class="sobre-list">
+        <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Diagnóstico por imagem digital, com explicação passo a passo</li>
+        <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Consultas com tempo reservado — sem sensação de linha de produção</li>
+        <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Protocolos de esterilização auditados a cada semana</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIFERENCIAIS (pilha) ============ -->
+<section class="section section-surface" id="diferenciais">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow-script">por que a Valle Bianco</span>
+      <h2>Diferenciais que você sente já na primeira visita</h2>
+    </div>
+    <div class="pilha-wrap" id="pilhaWrap">
+      <div class="pilha-card" style="z-index:1;">
+        <span class="num">01</span>
+        <div><h3>Atendimento humanizado</h3><p>Antes de falar em tratamento, ouvimos o que te trouxe até aqui — receios, histórico, rotina. É esse contexto que orienta cada decisão clínica.</p></div>
+      </div>
+      <div class="pilha-card" style="z-index:2;">
+        <span class="num">02</span>
+        <div><h3>Tecnologia a serviço do cuidado</h3><p>Escaneamento intraoral e radiografia digital reduzem exames repetidos e tornam o diagnóstico mais rápido e mais preciso.</p></div>
+      </div>
+      <div class="pilha-card" style="z-index:3;">
+        <span class="num">03</span>
+        <div><h3>Planejamento personalizado</h3><p>Nenhum plano de tratamento é copiado do anterior. Definimos etapas, prazos e valores de forma clara, antes de começar.</p></div>
+      </div>
+      <div class="pilha-card" style="z-index:4;">
+        <span class="num">04</span>
+        <div><h3>Acompanhamento contínuo</h3><p>Depois da alta, seguimos por perto com retornos programados — prevenção é parte do tratamento, não uma etapa à parte.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVIÇOS ============ -->
+<section class="section" id="servicos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow-script">tratamentos</span>
+      <h2>Serviços</h2>
+      <p>Do check-up de rotina a tratamentos mais completos, cada procedimento é conduzido pelo especialista responsável por aquela área.</p>
+    </div>
+    <div class="servicos-grid" id="servicosGrid">
+      <div class="servico-card reveal"><div class="servico-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M15 15l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><h3>Avaliação odontológica</h3><p>Exame completo, imagem digital e um plano claro do que fazer a seguir.</p></div>
+      <div class="servico-card reveal"><div class="servico-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4L12 3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="18" cy="17" r="1.6" stroke="currentColor" stroke-width="1.3"/></svg></div><h3>Limpeza e prevenção</h3><p>Remoção de tártaro e orientação de higiene sob medida para sua rotina.</p></div>
+      <div class="servico-card reveal"><div class="servico-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><h3>Clareamento dental</h3><p>Protocolo supervisionado, com resultado gradual e seguro para o esmalte.</p></div>
+      <div class="servico-card reveal"><div class="servico-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v6M9.5 7.5h5M12 9v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8 21l1.4-9h5.2L16 21" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></div><h3>Implantes</h3><p>Reposição de dentes ausentes com planejamento guiado por imagem 3D.</p></div>
+      <div class="servico-card reveal"><div class="servico-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="15" cy="12" r="1" fill="currentColor"/></svg></div><h3>Ortodontia</h3><p>Aparelhos fixos e alinhadores, com acompanhamento mensal do progresso.</p></div>
+      <div class="servico-card reveal"><div class="servico-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.2 8.5-7 10-3.8-1.5-7-5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></div><h3>Restaurações</h3><p>Recomposição de dentes com resina estética, no mesmo tom natural.</p></div>
+      <div class="servico-card reveal"><div class="servico-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.6 6.4L21 11l-6.4 2.6L12 20l-2.6-6.4L3 11l6.4-2.6L12 2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></div><h3>Estética dental</h3><p>Lentes e harmonização do sorriso, respeitando as suas proporções naturais.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERIA HORIZONTAL ============ -->
+<section class="section galeria-h section-surface" id="galeriaH">
+  <div class="container galeria-h__intro">
+    <div class="section-head reveal" style="margin-bottom:0;">
+      <span class="eyebrow-script">por dentro da clínica</span>
+      <h2>Um espaço para cada etapa do cuidado</h2>
+      <p>Continue rolando a página — a galeria acompanha o seu scroll.</p>
+    </div>
+  </div>
+  <div class="galeria-h__stage" id="galeriaStage">
+    <div class="galeria-h__track" id="galeriaTrack">
+      <div class="h-card"><div class="bg" style="background:linear-gradient(155deg,#1F6F62,#3F9C8C);"></div><div class="content"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" stroke="#fff" stroke-width="1.4"/><path d="M8 9h8M8 13h5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg><h3>Consultórios amplos</h3><p>Salas individuais, com luz natural e equipamento silencioso.</p></div></div>
+      <div class="h-card"><div class="bg" style="background:linear-gradient(155deg,#3F9C8C,#8FCFC0);"></div><div class="content"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2" stroke="#fff" stroke-width="1.4"/><path d="M9 8h6M9 12h6M9 16h3" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg><h3>Central de esterilização</h3><p>Ciclo próprio de esterilização, auditado semanalmente.</p></div></div>
+      <div class="h-card"><div class="bg" style="background:linear-gradient(155deg,#12302B,#1F6F62);"></div><div class="content"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#fff" stroke-width="1.4"/><path d="M12 8v4l3 2" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg><h3>Tecnologia 3D</h3><p>Escaneamento intraoral que dispensa moldagens desconfortáveis.</p></div></div>
+      <div class="h-card"><div class="bg" style="background:linear-gradient(155deg,#8FCFC0,#3F9C8C);"></div><div class="content"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20v-3a4 4 0 014-4h8a4 4 0 014 4v3" stroke="#fff" stroke-width="1.4"/><circle cx="12" cy="7" r="3.2" stroke="#fff" stroke-width="1.4"/></svg><h3>Recepção acolhedora</h3><p>Um primeiro momento pensado para diminuir a ansiedade da visita.</p></div></div>
+      <div class="h-card"><div class="bg" style="background:linear-gradient(155deg,#1F6F62,#12302B);"></div><div class="content"><svg viewBox="0 0 24 24" fill="none"><path d="M4 17V9a2 2 0 012-2h12a2 2 0 012 2v8" stroke="#fff" stroke-width="1.4"/><path d="M2 17h20" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg><h3>Sala de espera</h3><p>Poltronas confortáveis e um ambiente tranquilo, longe da correria.</p></div></div>
+      <div class="h-card"><div class="bg" style="background:linear-gradient(155deg,#3F9C8C,#1F6F62);"></div><div class="content"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="#fff" stroke-width="1.4"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#fff" stroke-width="1.4"/><circle cx="18" cy="9" r="2.4" stroke="#fff" stroke-width="1.2"/></svg><h3>Equipe especializada</h3><p>Cirurgiões-dentistas de diferentes áreas, sob o mesmo teto.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="section" id="jornada">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow-script">como funciona</span>
+      <h2>A sua jornada com a gente</h2>
+    </div>
+    <div class="timeline-wrap">
+      <div class="timeline-track"><div class="timeline-fill" id="timelineFill"></div></div>
+      <ol class="timeline-list" id="timelineList">
+        <li class="timeline-step"><span class="timeline-dot">1</span><h3>Primeira conversa</h3><p>Você nos conta o que sente e o que espera — por telefone, WhatsApp ou presencialmente.</p></li>
+        <li class="timeline-step"><span class="timeline-dot">2</span><h3>Avaliação</h3><p>Exame clínico e, quando necessário, imagem digital, para entender o quadro completo.</p></li>
+        <li class="timeline-step"><span class="timeline-dot">3</span><h3>Planejamento</h3><p>Apresentamos as opções de tratamento, prazos e valores, sem letras miúdas.</p></li>
+        <li class="timeline-step"><span class="timeline-dot">4</span><h3>Tratamento</h3><p>Cada etapa é conduzida no seu ritmo, com explicações antes de qualquer procedimento.</p></li>
+        <li class="timeline-step"><span class="timeline-dot">5</span><h3>Acompanhamento</h3><p>Retornos programados para manter o resultado — e para pegar qualquer sinal cedo.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DRAG GALLERY ============ -->
+<section class="section section-surface" id="bastidores">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow-script">momentos na clínica</span>
+      <h2>Um dia de cuidado, em imagens</h2>
+    </div>
+    <div class="drag-gallery" id="dragGallery">
+      <div class="d-card"><div class="bg" style="background:linear-gradient(160deg,#1F6F62,#8FCFC0);"></div><div class="content"><span>Acolhimento</span><h3>Primeira consulta</h3></div></div>
+      <div class="d-card"><div class="bg" style="background:linear-gradient(160deg,#3F9C8C,#12302B);"></div><div class="content"><span>Diagnóstico</span><h3>Planejamento com imagem 3D</h3></div></div>
+      <div class="d-card"><div class="bg" style="background:linear-gradient(160deg,#8FCFC0,#1F6F62);"></div><div class="content"><span>Conforto</span><h3>Ambiente pensado para relaxar</h3></div></div>
+      <div class="d-card"><div class="bg" style="background:linear-gradient(160deg,#12302B,#3F9C8C);"></div><div class="content"><span>Equipe</span><h3>Sempre por perto durante o tratamento</h3></div></div>
+      <div class="d-card"><div class="bg" style="background:linear-gradient(160deg,#1F6F62,#3F9C8C);"></div><div class="content"><span>Continuidade</span><h3>Acompanhamento após a alta</h3></div></div>
+      <div class="d-card"><div class="bg" style="background:linear-gradient(160deg,#3F9C8C,#8FCFC0);"></div><div class="content"><span>Resultado</span><h3>Um sorriso que dura</h3></div></div>
+    </div>
+    <div class="drag-hint"><svg viewBox="0 0 24 24" fill="none"><path d="M8 9l-4 4 4 4M16 9l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Arraste para o lado</div>
+  </div>
+</section>
+
+<!-- ============ DEPOIMENTOS ============ -->
+<section class="section" id="depoimentos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow-script">quem já passou por aqui</span>
+      <h2>Depoimentos</h2>
+    </div>
+    <div class="depoimentos-grid" id="depoGrid">
+      <div class="depo-card reveal">
+        <div class="depo-top"><div class="avatar" style="background:#1F6F62;">IB</div><div><div class="depo-name">Iolanda Bevilaqua</div><div class="depo-loc">Bairro Progresso</div></div></div>
+        <div class="stars">★★★★★</div>
+        <p>Fui pela primeira vez sem saber o que esperar e saí com um plano bem explicado, sem pressa nenhuma. Isso fez toda diferença.</p>
+      </div>
+      <div class="depo-card reveal">
+        <div class="depo-top"><div class="avatar" style="background:#3F9C8C;">RT</div><div><div class="depo-name">Rosalvo Tondo</div><div class="depo-loc">Vale do Peverada</div></div></div>
+        <div class="stars">★★★★★</div>
+        <p>Fiz o implante depois de anos adiando. A equipe explicou cada etapa antes de começar, e o pós-operatório foi bem tranquilo.</p>
+      </div>
+      <div class="depo-card reveal">
+        <div class="depo-top"><div class="avatar" style="background:#12302B;">ZS</div><div><div class="depo-name">Zuleica Sartori</div><div class="depo-loc">São Bento Alto</div></div></div>
+        <div class="stars">★★★★★</div>
+        <p>Meus filhos tinham medo de dentista e hoje pedem para voltar. O jeito de conversar com eles fez toda a diferença.</p>
+      </div>
+      <div class="depo-card reveal">
+        <div class="depo-top"><div class="avatar" style="background:#3F9C8C;">NZ</div><div><div class="depo-name">Neivor Zambon</div><div class="depo-loc">Centro</div></div></div>
+        <div class="stars">★★★★☆</div>
+        <p>Clareamento com resultado natural, sem sensibilidade exagerada. Recomendo pela clareza dos valores desde o início.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section section-surface" id="duvidas">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow-script">antes de agendar</span>
+      <h2>Perguntas frequentes</h2>
+    </div>
+    <div class="faq-wrap" id="faqWrap">
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Onde fica a clínica?<span class="faq-icon"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p>Estamos na Rua Erechim, 482, Bairro Progresso, em Bento Gonçalves — a três quadras da Avenida Osvaldo Aranha, com estacionamento próprio.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Como funciona a primeira avaliação?<span class="faq-icon"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p>Começamos com uma conversa sobre seu histórico, seguida de exame clínico e, se necessário, imagem digital. Ao final, você já sai com uma ideia clara dos próximos passos.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Preciso marcar horário?<span class="faq-icon"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p>Sim. Atendemos por horário marcado para garantir tempo adequado a cada paciente — mas urgências têm encaixe no mesmo dia sempre que possível.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Quais tratamentos vocês oferecem?<span class="faq-icon"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p>Avaliação geral, limpeza e prevenção, clareamento, implantes, ortodontia, restaurações e estética dental. Se o seu caso precisar de outra especialidade, indicamos parceiros de confiança.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Como funciona o atendimento?<span class="faq-icon"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p>Cada consulta tem tempo reservado só para você. Explicamos o que está sendo feito e por quê, antes de qualquer procedimento.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">A clínica atende crianças?<span class="faq-icon"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p>Sim, temos atendimento odontopediátrico, com consultas pensadas para deixar a criança confortável desde a primeira visita.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Quais formas de pagamento estão disponíveis?<span class="faq-icon"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p>Aceitamos cartão, Pix e parcelamento direto com a clínica para tratamentos mais longos, combinado antes do início.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Quanto tempo dura uma consulta?<span class="faq-icon"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p>Em média de 40 a 60 minutos, variando conforme o procedimento. Nunca encaixamos duas consultas no mesmo horário.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Posso tirar dúvidas antes de marcar?<span class="faq-icon"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p>Claro. Você pode chamar no WhatsApp para entender valores e disponibilidade antes de confirmar qualquer horário.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Como faço para agendar?<span class="faq-icon"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p>Pelo botão "Agendar avaliação" no topo da página, pelo WhatsApp, ou por telefone em nosso horário de atendimento.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAT ============ -->
+<section class="section" id="chat-section">
+  <div class="container">
+    <div class="section-head reveal" style="text-align:center;margin-left:auto;margin-right:auto;">
+      <span class="eyebrow-script">tire suas dúvidas</span>
+      <h2 style="max-width:none;">Converse com a Valle Bianco</h2>
+      <p style="margin-left:auto;margin-right:auto;">Toque numa pergunta abaixo para ver como respondemos. É uma simulação, para você conhecer o nosso jeito de atender.</p>
+    </div>
+    <div class="chat-shell reveal">
+      <div class="chat-head"><span class="dot"></span><div><strong>Valle Bianco</strong><span>Normalmente responde em minutos</span></div></div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg msg-bot">Olá! Eu sou o assistente virtual da Valle Bianco. Toque numa das perguntas abaixo. 😊</div>
+      </div>
+      <div class="chat-suggestions" id="chatSuggestions">
+        <button class="chat-chip" data-q="onde">Onde fica a clínica?</button>
+        <button class="chat-chip" data-q="avaliacao">Como funciona a avaliação?</button>
+        <button class="chat-chip" data-q="tratamentos">Quais tratamentos vocês fazem?</button>
+        <button class="chat-chip" data-q="clareamento">Quero saber sobre clareamento.</button>
+        <button class="chat-chip" data-q="medo">Tenho medo de dentista. Como funciona o atendimento?</button>
+        <button class="chat-chip" data-q="agendar">Quero agendar uma consulta.</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="section cta-final" id="contato">
+  <canvas class="cta-final-canvas" id="ctaCanvas" aria-hidden="true"></canvas>
+  <div class="hero-fallback-bg" aria-hidden="true"></div>
+  <div class="cta-final-veil" aria-hidden="true"></div>
+  <div class="container">
+    <span class="eyebrow-script">Valle Bianco Odontologia</span>
+    <h2>Um sorriso cuidado começa numa conversa simples</h2>
+    <div class="cta-final-actions">
+      <a href="#" class="btn btn-primary" id="whatsappCtaBtn">Agendar pelo WhatsApp</a>
+      <a href="tel:+555434521180" class="btn btn-outline">Ligar para a clínica</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#topo" class="logo" style="margin-bottom:16px;">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3C10 3 6 8 6 14c0 7 4.5 12.5 8.2 14.4.6.3 1 .3 1.6 0C19.5 26.5 26 21 26 14c0-6-4-11-10-11Z" stroke="currentColor" stroke-width="1.4"/></svg>
+          <span class="logo-text"><strong>Valle Bianco</strong><span>Odontologia</span></span>
+        </a>
+        <p style="max-width:34ch;">Odontologia atenciosa e tecnológica no coração de Bento Gonçalves, RS.</p>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <p>Rua Erechim, 482 — Bairro Progresso<br>Bento Gonçalves — RS</p>
+        <a href="tel:+555434521180">(54) 3452-1180</a>
+        <a href="#" id="footerWhatsapp">WhatsApp: (54) 9 9900-1122</a>
+        <a href="#">@vallebianco.odonto</a>
+      </div>
+      <div>
+        <h4>Horário</h4>
+        <p>Segunda a sexta: 8h às 19h<br>Sábados: 8h às 12h</p>
+        <h4 style="margin-top:22px;">Navegação</h4>
+        <a href="#servicos">Serviços</a>
+        <a href="#duvidas">Dúvidas frequentes</a>
+      </div>
+    </div>
+    <div class="footer-bottom">Valle Bianco Odontologia — clínica fictícia criada para fins de demonstração. Nomes, endereço e dados de contato não correspondem a um estabelecimento real.</div>
+  </div>
+</footer>
+
+<a href="#" class="wa-float" id="waFloat" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 00-7.8 13.5L3 21l4.7-1.2A9 9 0 1012 3Z" stroke="currentColor" stroke-width="1.4"/><path d="M8.5 9.5c.3 2.6 2.4 4.7 5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+</a>
+
+<script>
+(function(){
+"use strict";
+var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduceMotion){ document.documentElement.classList.add('reduce-motion'); }
+
+/* fake whatsapp links (demo only) */
+var waLink = "https://wa.me/5554999001122?text=" + encodeURIComponent("Olá! Gostaria de agendar uma avaliação na Valle Bianco.");
+["waFloat","whatsappCtaBtn","footerWhatsapp"].forEach(function(id){
+  var el = document.getElementById(id);
+  if(el){ el.setAttribute('href', waLink); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
+});
+
+/* ---------- Header scroll + mobile nav ---------- */
+var header = document.getElementById('siteHeader');
+window.addEventListener('scroll', function(){
+  header.classList.toggle('is-scrolled', window.scrollY > 30);
+}, {passive:true});
+
+var navToggle = document.getElementById('navToggle');
+var navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', function(){
+  var open = navLinks.classList.toggle('is-open');
+  navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+navLinks.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click', function(){
+    navLinks.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  });
+});
+
+/* ---------- Reveal on scroll ---------- */
+if('IntersectionObserver' in window){
+  var revealObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ revealObs.observe(el); });
+} else {
+  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
+}
+
+/* ---------- WebGL fluid shader ---------- */
+function createFluidCanvas(canvas, opts){
+  opts = opts || {};
+  var gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if(!gl){ return null; }
+
+  var vsSource = "attribute vec2 a_pos; void main(){ gl_Position = vec4(a_pos,0.0,1.0); }";
+  var fsSource = [
+    "precision mediump float;",
+    "uniform vec2 u_resolution;",
+    "uniform float u_time;",
+    "uniform vec2 u_mouse;",
+    "uniform vec3 u_colorA;",
+    "uniform vec3 u_colorB;",
+    "void main(){",
+    "  vec2 uv = gl_FragCoord.xy / u_resolution.xy;",
+    "  vec2 p = uv * 2.0 - 1.0;",
+    "  p.x *= u_resolution.x / u_resolution.y;",
+    "  float t = u_time * 0.05;",
+    "  vec2 m = (u_mouse - 0.5) * 0.6;",
+    "  float n = 0.0;",
+    "  n += sin((p.x + m.x) * 2.6 + t * 1.2) * 0.5;",
+    "  n += sin((p.y - m.y) * 3.1 - t * 1.6) * 0.5;",
+    "  n += sin((p.x + p.y + m.x - m.y) * 2.1 + t * 2.0) * 0.5;",
+    "  n += sin(length(p - m) * 3.4 - t * 1.4) * 0.35;",
+    "  n = n * 0.5 + 0.5;",
+    "  float band = smoothstep(0.25, 0.85, n);",
+    "  vec3 color = mix(u_colorA, u_colorB, band);",
+    "  gl_FragColor = vec4(color, 1.0);",
+    "}"
+  ].join("\n");
+
+  function compile(type, src){
+    var s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if(!gl.getShaderParameter(s, gl.COMPILE_STATUS)){ gl.deleteShader(s); return null; }
+    return s;
+  }
+  var vs = compile(gl.VERTEX_SHADER, vsSource);
+  var fs = compile(gl.FRAGMENT_SHADER, fsSource);
+  if(!vs || !fs){ return null; }
+  var program = gl.createProgram();
+  gl.attachShader(program, vs);
+  gl.attachShader(program, fs);
+  gl.linkProgram(program);
+  if(!gl.getProgramParameter(program, gl.LINK_STATUS)){ return null; }
+  gl.useProgram(program);
+
+  var buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
+  var posLoc = gl.getAttribLocation(program, 'a_pos');
+  gl.enableVertexAttribArray(posLoc);
+  gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+  var u_res = gl.getUniformLocation(program, 'u_resolution');
+  var u_time = gl.getUniformLocation(program, 'u_time');
+  var u_mouse = gl.getUniformLocation(program, 'u_mouse');
+  var u_colorA = gl.getUniformLocation(program, 'u_colorA');
+  var u_colorB = gl.getUniformLocation(program, 'u_colorB');
+
+  var colorA = opts.colorA || [0.945,0.976,0.965];
+  var colorB = opts.colorB || [0.122,0.435,0.384];
+  var mouse = [0.5,0.5];
+  var visible = true;
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  function resize(){
+    var w = canvas.clientWidth || canvas.parentElement.clientWidth;
+    var h = canvas.clientHeight || canvas.parentElement.clientHeight;
+    canvas.width = Math.max(1, Math.floor(w * dpr * (opts.scale||1)));
+    canvas.height = Math.max(1, Math.floor(h * dpr * (opts.scale||1)));
+    gl.viewport(0,0,canvas.width, canvas.height);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  if(opts.interactive){
+    canvas.parentElement.addEventListener('mousemove', function(e){
+      var rect = canvas.parentElement.getBoundingClientRect();
+      mouse[0] = (e.clientX - rect.left) / rect.width;
+      mouse[1] = 1.0 - (e.clientY - rect.top) / rect.height;
+    });
+  }
+
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      visible = entries[0].isIntersecting;
+    }, {threshold:0.01}).observe(canvas);
+  }
+
+  var rafId = null;
+  function render(time){
+    if(visible){
+      gl.uniform2f(u_res, canvas.width, canvas.height);
+      gl.uniform1f(u_time, time * 0.001);
+      gl.uniform2f(u_mouse, mouse[0], mouse[1]);
+      gl.uniform3f(u_colorA, colorA[0], colorA[1], colorA[2]);
+      gl.uniform3f(u_colorB, colorB[0], colorB[1], colorB[2]);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+    }
+    rafId = requestAnimationFrame(render);
+  }
+
+  if(reduceMotion){
+    gl.uniform2f(u_res, canvas.width, canvas.height);
+    gl.uniform1f(u_time, 0);
+    gl.uniform2f(u_mouse, 0.5, 0.5);
+    gl.uniform3f(u_colorA, colorA[0], colorA[1], colorA[2]);
+    gl.uniform3f(u_colorB, colorB[0], colorB[1], colorB[2]);
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+  } else {
+    rafId = requestAnimationFrame(render);
+  }
+
+  return { gl: gl, stop: function(){ if(rafId) cancelAnimationFrame(rafId); } };
+}
+
+var heroCanvas = document.getElementById('heroCanvas');
+var heroSection = heroCanvas.closest('.hero');
+var heroShader = createFluidCanvas(heroCanvas, {interactive:true});
+if(!heroShader){ heroSection.classList.add('no-webgl'); }
+
+var ctaCanvas = document.getElementById('ctaCanvas');
+var ctaSection = ctaCanvas.closest('.cta-final');
+var ctaShader = createFluidCanvas(ctaCanvas, {interactive:false, scale:0.6});
+if(!ctaShader){ ctaSection.classList.add('no-webgl'); }
+
+/* ---------- Galeria horizontal (sticky scroll) ---------- */
+var galeriaSection = document.getElementById('galeriaH');
+var galeriaStage = document.getElementById('galeriaStage');
+var galeriaTrack = document.getElementById('galeriaTrack');
+
+function isNarrowViewport(){ return window.innerHeight < 480; }
+
+function setupHorizontalGallery(){
+  if(reduceMotion){
+    galeriaSection.classList.add('reduced');
+    return;
+  }
+  galeriaSection.classList.remove('reduced');
+  var extra = Math.max(0, galeriaTrack.scrollWidth - galeriaStage.clientWidth);
+  galeriaSection.style.height = (window.innerHeight + extra) + 'px';
+}
+
+var galeriaTicking = false;
+function updateHorizontalGallery(){
+  if(reduceMotion) return;
+  var rect = galeriaSection.getBoundingClientRect();
+  var scrollable = galeriaSection.offsetHeight - window.innerHeight;
+  if(scrollable <= 0) return;
+  var progress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
+  var maxTranslate = Math.max(0, galeriaTrack.scrollWidth - galeriaStage.clientWidth);
+  galeriaTrack.style.transform = 'translateX(' + (-progress * maxTranslate) + 'px)';
+}
+function onScrollGaleria(){
+  if(!galeriaTicking){
+    galeriaTicking = true;
+    requestAnimationFrame(function(){ updateHorizontalGallery(); galeriaTicking = false; });
+  }
+}
+
+/* ---------- Pilha (stacking cards) ---------- */
+var pilhaCards = Array.prototype.slice.call(document.querySelectorAll('.pilha-card'));
+var STICKY_TOP = 110;
+var OVERLAP_ZONE = 130;
+function updatePilha(){
+  for(var i=0;i<pilhaCards.length-1;i++){
+    var next = pilhaCards[i+1];
+    var rect = next.getBoundingClientRect();
+    var overlap = STICKY_TOP - rect.top;
+    var progress = Math.min(Math.max(overlap / OVERLAP_ZONE, 0), 1);
+    var card = pilhaCards[i];
+    if(reduceMotion){
+      card.style.transform = '';
+      card.style.filter = '';
+    } else {
+      card.style.transform = 'scale(' + (1 - 0.05*progress) + ') translateY(' + (-8*progress) + 'px)';
+      card.style.filter = 'brightness(' + (1 - 0.18*progress) + ')';
+    }
+  }
+}
+
+/* ---------- Timeline ---------- */
+var timelineList = document.getElementById('timelineList');
+var timelineFill = document.getElementById('timelineFill');
+var timelineSteps = Array.prototype.slice.call(document.querySelectorAll('.timeline-step'));
+function updateTimeline(){
+  var rect = timelineList.getBoundingClientRect();
+  var vh = window.innerHeight;
+  var total = rect.height + vh * 0.4;
+  var passed = vh * 0.75 - rect.top;
+  var progress = Math.min(Math.max(passed / total, 0), 1);
+  timelineFill.style.height = (progress * 100) + '%';
+}
+if('IntersectionObserver' in window){
+  var stepObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('is-active'); }
+    });
+  }, {threshold:0.5, rootMargin:'0px 0px -20% 0px'});
+  timelineSteps.forEach(function(s){ stepObs.observe(s); });
+}
+
+/* ---------- Master scroll loop (pilha + timeline) ---------- */
+var masterTicking = false;
+function onMasterScroll(){
+  if(!masterTicking){
+    masterTicking = true;
+    requestAnimationFrame(function(){
+      updatePilha();
+      updateTimeline();
+      masterTicking = false;
+    });
+  }
+}
+window.addEventListener('scroll', onMasterScroll, {passive:true});
+window.addEventListener('scroll', onScrollGaleria, {passive:true});
+window.addEventListener('resize', function(){
+  setupHorizontalGallery();
+  updateHorizontalGallery();
+  updatePilha();
+  updateTimeline();
+});
+setupHorizontalGallery();
+updateHorizontalGallery();
+updatePilha();
+updateTimeline();
+
+/* ---------- Drag gallery with inertia ---------- */
+(function(){
+  var gallery = document.getElementById('dragGallery');
+  var isDown = false, startX = 0, startScroll = 0, lastX = 0, lastT = 0, velocity = 0, momentumId = null;
+
+  function stopMomentum(){ if(momentumId){ cancelAnimationFrame(momentumId); momentumId = null; } }
+
+  function pointerDown(e){
+    isDown = true;
+    stopMomentum();
+    gallery.classList.add('is-dragging');
+    startX = e.clientX;
+    startScroll = gallery.scrollLeft;
+    lastX = e.clientX;
+    lastT = performance.now();
+    velocity = 0;
+    gallery.setPointerCapture && e.pointerId != null && gallery.setPointerCapture(e.pointerId);
+  }
+  function pointerMove(e){
+    if(!isDown) return;
+    var dx = e.clientX - startX;
+    gallery.scrollLeft = startScroll - dx;
+    var now = performance.now();
+    var dt = now - lastT;
+    if(dt > 0){ velocity = (e.clientX - lastX) / dt; }
+    lastX = e.clientX;
+    lastT = now;
+  }
+  function pointerUp(){
+    if(!isDown) return;
+    isDown = false;
+    gallery.classList.remove('is-dragging');
+    if(reduceMotion) return;
+    var v = -velocity * 16;
+    function step(){
+      if(Math.abs(v) < 0.5){ momentumId = null; return; }
+      var max = gallery.scrollWidth - gallery.clientWidth;
+      var next = gallery.scrollLeft + v;
+      if(next < 0){ gallery.scrollLeft = 0; momentumId = null; return; }
+      if(next > max){ gallery.scrollLeft = max; momentumId = null; return; }
+      gallery.scrollLeft = next;
+      v *= 0.94;
+      momentumId = requestAnimationFrame(step);
+    }
+    momentumId = requestAnimationFrame(step);
+  }
+
+  gallery.addEventListener('pointerdown', pointerDown);
+  gallery.addEventListener('pointermove', pointerMove);
+  window.addEventListener('pointerup', pointerUp);
+  window.addEventListener('pointercancel', pointerUp);
+  gallery.addEventListener('dragstart', function(e){ e.preventDefault(); });
+})();
+
+/* ---------- FAQ accordion ---------- */
+document.querySelectorAll('.faq-item').forEach(function(item){
+  var btn = item.querySelector('.faq-q');
+  btn.addEventListener('click', function(){
+    var isOpen = item.classList.contains('is-open');
+    document.querySelectorAll('.faq-item.is-open').forEach(function(openItem){
+      if(openItem !== item){
+        openItem.classList.remove('is-open');
+        openItem.querySelector('.faq-q').setAttribute('aria-expanded','false');
+      }
+    });
+    item.classList.toggle('is-open', !isOpen);
+    btn.setAttribute('aria-expanded', (!isOpen).toString());
+  });
+});
+
+/* ---------- Chat simulado ---------- */
+(function(){
+  var answers = {
+    onde: "Ficamos na Rua Erechim, 482, Bairro Progresso, em Bento Gonçalves, com estacionamento próprio.",
+    avaliacao: "A avaliação começa com uma conversa sobre seu histórico, seguida de exame clínico e, se preciso, imagem digital — em cerca de 40 minutos.",
+    tratamentos: "Fazemos avaliação geral, limpeza e prevenção, clareamento, implantes, ortodontia, restaurações e estética dental.",
+    clareamento: "O clareamento é feito com protocolo supervisionado pela equipe, com resultado gradual e seguro para o esmalte.",
+    medo: "Entendemos completamente. Reservamos mais tempo para explicar cada etapa antes de fazer, no seu ritmo, sem pressa.",
+    agendar: "Ótimo! Você pode agendar pelo botão \"Agendar avaliação\" no topo da página ou falar com a gente pelo WhatsApp."
+  };
+  var messages = document.getElementById('chatMessages');
+  var chips = document.querySelectorAll('.chat-chip');
+
+  function scrollToBottom(){ messages.scrollTop = messages.scrollHeight; }
+
+  function addMessage(text, who){
+    var div = document.createElement('div');
+    div.className = 'msg ' + (who === 'user' ? 'msg-user' : 'msg-bot');
+    div.textContent = text;
+    messages.appendChild(div);
+    scrollToBottom();
+  }
+
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      var key = chip.getAttribute('data-q');
+      var questionText = chip.textContent;
+      chips.forEach(function(c){ c.disabled = true; });
+      addMessage(questionText, 'user');
+
+      var typing = document.createElement('div');
+      typing.className = 'typing';
+      typing.innerHTML = '<span></span><span></span><span></span>';
+      messages.appendChild(typing);
+      scrollToBottom();
+
+      var delay = reduceMotion ? 200 : 1000;
+      setTimeout(function(){
+        typing.remove();
+        addMessage(answers[key] || "Obrigado pela pergunta! Nossa equipe pode te ajudar melhor pelo WhatsApp.", 'bot');
+        chips.forEach(function(c){ c.disabled = false; });
+      }, delay);
+    });
+  });
+})();
+
+})();
+</script>
+</body>
+</html>
